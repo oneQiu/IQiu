@@ -1,1 +1,17 @@
-{}
+{
+  "compilerOptions": {
+    "watch": true,
+    "jsx": "react",
+    "target": "ES5",
+    "lib": ["DOM", "ESNext"],
+    "sourceMap": true,
+    "allowJs": false,
+    "baseUrl": "./",
+    "strict": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["./src"]
+}

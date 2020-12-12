@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const ProgressBar = require("progress-bar-webpack-plugin")
+// tslint
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 const Path = require("path")
 const Chalk = require("chalk")
 
@@ -12,18 +14,16 @@ function resolve(path) {
 /** @type {import('webpack').Configuration} */
 const WebpackBaseConfig = {
 	mode: "development",
-	entry: resolve("../src/index.ts"),
+	entry: resolve("../src/index.tsx"),
 	output: {
 		path: resolve("../dist"),
-		publicPath: "/dist/",
 		filename: "js/[name].[hash].js",
 	},
 	module: {
 		rules: [
 			{
 				test: /.(t|j)sx?$/,
-				include: [resolve(__dirname, "../src")],
-				exclude: [resolve(__dirname, "../node_modules")],
+				exclude: /node_modules/,
 				use: "ts-loader",
 			},
 			{
@@ -60,6 +60,14 @@ const WebpackBaseConfig = {
 		new HtmlWebpackPlugin({
 			template: resolve("../public/index.html"),
 			minify: true,
+		}),
+		new ForkTsCheckerWebpackPlugin({
+			async: false,
+			typescript: {
+				enabled: true,
+				configFile: resolve("../tsconfig.json"),
+				build: false,
+			},
 		}),
 		// copy静态文件
 		// new CopyWebpackPlugin([]),
