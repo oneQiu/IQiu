@@ -24,7 +24,12 @@ const WebpackBaseConfig = {
 			{
 				test: /.(t|j)sx?$/,
 				exclude: /node_modules/,
-				use: "ts-loader",
+				use: {
+					loader: "ts-loader",
+					options: {
+						transpileOnly: true,
+					},
+				},
 			},
 			{
 				test: /.(cs|les)s$/,
@@ -40,6 +45,10 @@ const WebpackBaseConfig = {
 		extensions: [".json", ".ts", ".tsx", ".js", ".jsx"],
 		alias: {
 			"@": resolve("../src"),
+			"@redux": resolve("../src/redux"),
+			"@pages": resolve("../src/pages"),
+			"@components": resolve("../src/components"),
+			"@utils": resolve("../src/utils"),
 		},
 	},
 	plugins: [
