@@ -1,6 +1,6 @@
-import React, { Component, Dispatch } from "react"
+import React, { Component } from "react"
 import { connect } from "react-redux"
-import { TUserActionTypes, TUserState } from "@redux/user/types"
+import { TUserState } from "@redux/user/types"
 
 /**
  * 首页框架
@@ -11,7 +11,7 @@ class Index extends Component<IProps> {
 		console.log(this.props)
 	}
 	render() {
-		return <h2></h2>
+		return <h2>test</h2>
 	}
 }
 
@@ -20,7 +20,4 @@ const mapStateToProps = (state: TUserState) => {
 		...state,
 	}
 }
-const mapDispatchToProps = (dispatch: Dispatch<TUserActionTypes>) => ({
-	setName: () => {},
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Index)
+export default connect(mapStateToProps)(Index)

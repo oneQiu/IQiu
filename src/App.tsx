@@ -1,11 +1,11 @@
 import React, { Component } from "react"
-import Index from "./pages/index"
+import RouteView from "./routes"
 
 export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<Index />
+				<RouteView defaultConfig={[]}/>
 			</div>
 		)
 	}
