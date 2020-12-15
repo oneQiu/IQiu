@@ -49,6 +49,7 @@ const WebpackBaseConfig = {
 			"@pages": resolve("../src/pages"),
 			"@components": resolve("../src/components"),
 			"@utils": resolve("../src/utils"),
+			"@routes": resolve("../src/routes"),
 		},
 	},
 	plugins: [

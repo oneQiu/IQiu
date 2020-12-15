@@ -8,6 +8,8 @@ const isBundle = process.env.NODE_ENV === "bundle"
 module.exports = merge(WebpackBaseConfig, {
 	devtool: "eval-source-map",
 	devServer: {
+		// Fix history模式下404
+		historyApiFallback: true,
 		port: 7777,
 		host: "localhost",
 		hot: true,

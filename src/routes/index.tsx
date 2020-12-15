@@ -1,16 +1,16 @@
 import React, { Component, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { TRouteConfig } from './config';
-
+import Index from '@pages/index';
 interface IProps {
-	/**
-	 * 路由原信息 参数优先级大于routers
-	 */
-	defaultConfig?: TRouteConfig;
-	/**
-	 * 子路由信息传递下去
-	 */
-	routers?: TRouteConfig; 
+  /**
+   * 路由原信息 参数优先级大于routers
+   */
+  defaultConfig?: TRouteConfig;
+  /**
+   * 子路由信息传递下去
+   */
+  routers?: TRouteConfig;
 }
 
 interface IState {
@@ -24,31 +24,26 @@ interface IState {
 export default class RouteView extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = {
-      redirctRoutes: [],
-      basisRoutes: [],
-    };
-  }
-
-  componentDidMount() {
-		const { defaultConfig, routers } = this.props;
-		const config = (defaultConfig ? defaultConfig : routers) || [];
+    const { defaultConfig, routers } = this.props;
+    const config = (defaultConfig ? defaultConfig : routers) || [];
     // 筛选具有重定向的路由
     const redirctRoutes = config.filter(route => route.redirct);
     // 筛选不具有重定向的基础路由
-    const basisRoutes = config.filter(route => !route.redirct);
-    this.setState({
+    const basisRoutes = config;
+    this.state = {
       redirctRoutes,
       basisRoutes,
-    });
+    };
   }
 
   render() {
     const { redirctRoutes, basisRoutes } = this.state;
-    const renderRedirct = redirctRoutes.map(i => i.redirct && <Redirect key={i.key} to={i.redirct} />);
+		const renderRedirct = redirctRoutes.map(i => i.redirct && <Redirect key={i.key} to={i.redirct} />);
+		console.log(12)
     return (
       <Suspense fallback={<div>Loading</div>}>
         <Switch>
+          <Route path='/asd' render={() => <div>sdada</div>} />
           {/* PS：需要使用render 否则component会导致页面的回流 */}
           {basisRoutes.map(i => (
             <Route
@@ -57,11 +52,10 @@ export default class RouteView extends Component<IProps, IState> {
               exact={i.exact}
               strict={i.strict}
               render={routeProps => {
-                console.log(routeProps);
-                const Comp:any = i.component;
+                const Comp: any = i.component;
                 // 动态title
                 document.title = i.title || 'IQ_Q';
-                return <Comp {...routeProps} routes={i.children}></Comp>
+                return <Comp {...routeProps} routes={i.children}></Comp>;
               }}
             />
           ))}
