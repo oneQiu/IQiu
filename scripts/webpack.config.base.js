@@ -18,6 +18,7 @@ const WebpackBaseConfig = {
 	output: {
 		path: resolve("../dist"),
 		filename: "js/[name].[hash].js",
+		publicPath: '/'
 	},
 	module: {
 		rules: [
@@ -80,8 +81,14 @@ const WebpackBaseConfig = {
 			},
 		}),
 		// copy静态文件
-		// new CopyWebpackPlugin([]),
+		new CopyWebpackPlugin({
+			patterns: [{
+				from: resolve('../src/static/404.html'),
+				
+			}]
+		}),
 	],
+	
 }
 
 module.exports = WebpackBaseConfig

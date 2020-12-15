@@ -31,6 +31,6 @@ const routeConfig: TRouteConfig = [
     title: '首页',
     component: Index,
     redirct: '/'
-  }
+  },
 ];
 export default routeConfig;

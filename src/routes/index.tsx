@@ -51,7 +51,7 @@ export default class RouteView extends Component<IProps, IState> {
               render={routeProps => {
                 const Comp: any = i.component;
                 // 动态title
-                document.title = i.title || 'IQ_Q';
+                i.title && (document.title = i.title || 'IQ_Q');
                 return <Comp {...routeProps} routes={i.children}></Comp>;
               }}
             />
