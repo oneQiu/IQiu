@@ -1,7 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { TRouteConfig } from './config';
-import Index from '@pages/index';
 interface IProps {
   /**
    * 路由原信息 参数优先级大于routers
@@ -38,12 +37,10 @@ export default class RouteView extends Component<IProps, IState> {
 
   render() {
     const { redirctRoutes, basisRoutes } = this.state;
-		const renderRedirct = redirctRoutes.map(i => i.redirct && <Redirect key={i.key} to={i.redirct} />);
-		console.log(12)
+		const renderRedirct = redirctRoutes.map(i => i.redirct && <Redirect key={i.key} to={i.redirct}/>);
     return (
       <Suspense fallback={<div>Loading</div>}>
         <Switch>
-          <Route path='/asd' render={() => <div>sdada</div>} />
           {/* PS：需要使用render 否则component会导致页面的回流 */}
           {basisRoutes.map(i => (
             <Route
