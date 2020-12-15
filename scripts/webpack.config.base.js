@@ -84,7 +84,6 @@ const WebpackBaseConfig = {
 		new CopyWebpackPlugin({
 			patterns: [{
 				from: resolve('../src/static/404.html'),
-				
 			}]
 		}),
 	],
