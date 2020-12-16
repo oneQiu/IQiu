@@ -1,7 +1,111 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
 import './index.less';
 
-export default () => {
+interface IProps {
+  code: number;
+  title: string;
+  subTitle: string;
+  onBack?: Function;
+}
+const NotFound: React.FC<IProps> = ({ code = 404, title = '我喜欢你，像风走了八千里，不问归期。', subTitle = '其实只是网页丢了', onBack }) => {
+  useEffect(() => {
+    // 初始化动画
+    gsap.set('svg', {
+      visibility: 'visible',
+    });
+    gsap.to('#headStripe', {
+      y: 0.5,
+      rotation: 1,
+      yoyo: true,
+      repeat: -1,
+      ease: 'sine.inOut',
+      duration: 1,
+    });
+    gsap.to('#spaceman', {
+      y: 0.5,
+      rotation: 1,
+      yoyo: true,
+      repeat: -1,
+      ease: 'sine.inOut',
+      duration: 1,
+    });
+    gsap.to('#craterSmall', {
+      x: -3,
+      yoyo: true,
+      repeat: -1,
+      duration: 1,
+      ease: 'sine.inOut',
+    });
+    gsap.to('#craterBig', {
+      x: 3,
+      yoyo: true,
+      repeat: -1,
+      duration: 1,
+      ease: 'sine.inOut',
+    });
+    gsap.to('#planet', {
+      rotation: -2,
+      yoyo: true,
+      repeat: -1,
+      duration: 1,
+      ease: 'sine.inOut',
+      transformOrigin: '50% 50%',
+    });
+    gsap.to('#starsBig g', {
+      rotation: 'random(-30,30)',
+      transformOrigin: '50% 50%',
+      yoyo: true,
+      repeat: -1,
+      ease: 'sine.inOut',
+    });
+    gsap.fromTo(
+      '#starsSmall g',
+      {
+        scale: 0,
+        transformOrigin: '50% 50%',
+      },
+      {
+        scale: 1,
+        transformOrigin: '50% 50%',
+        yoyo: true,
+        repeat: -1,
+        stagger: 0.1,
+      }
+    );
+    gsap.to('#circlesSmall circle', {
+      y: -4,
+      yoyo: true,
+      duration: 1,
+      ease: 'sine.inOut',
+      repeat: -1,
+    });
+    gsap.to('#circlesBig circle', {
+      y: -2,
+      yoyo: true,
+      duration: 1,
+      ease: 'sine.inOut',
+      repeat: -1,
+    });
+    gsap.set('#glassShine', {
+      x: -68,
+    });
+    gsap.to('#glassShine', {
+      x: 80,
+      duration: 2,
+      rotation: -30,
+      ease: 'expo.inOut',
+      transformOrigin: '50% 50%',
+      repeat: -1,
+      repeatDelay: 8,
+      delay: 2,
+    });
+  });
+  // 返回
+  const onBackClick = () => {
+    if(typeof onBack === 'function') onBack();
+    history.back();
+  };
   return (
     <div id='not_found'>
       <div className='container'>
@@ -319,10 +423,10 @@ export default () => {
             </svg>
           </div>
           <div className='col-md-6 align-self-center'>
-            <h1>404</h1>
-            <h2>我喜欢你，像风走了八千里，不问归期。</h2>
-            <p>其实只是网页丢了</p>
-            <button className='btn green' onClick={() => console.log(1223)}>
+            <h1>{code}</h1>
+            <h2>{title}</h2>
+            <p>{subTitle}</p>
+            <button className='not-found-btn green' onClick={onBackClick}>
               返回
             </button>
           </div>
@@ -331,3 +435,5 @@ export default () => {
     </div>
   );
 };
+
+export default NotFound;

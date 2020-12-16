@@ -1,6 +1,11 @@
-@import url(https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css);
+// 色彩变量
+@black: #0e0620;
+@white: #fff;
+@green: skyblue;
+
 #not_found {
   @import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
+
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -8,14 +13,8 @@
   -webkit-box-pack: center;
   justify-content: center;
   font-family: "Nunito Sans";
-  color: var(--blue);
+  color: @black;
   font-size: 1em;
-
-  :root {
-    --blue: #0e0620;
-    --white: #fff;
-    --green: #2ccf6d;
-  }
 
   button {
     font-family: "Nunito Sans";
@@ -101,8 +100,8 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: var(--green);
-    color: var(--blue);
+    background: @green;
+    color: @black;
     width: 300px;
     z-index: 1;
     padding-top: 80px;
@@ -132,7 +131,7 @@
 
   nav a:hover {
     text-decoration: none;
-    color: var(--white);
+    color: @white;
   }
 
   nav[data-state="open"] {
@@ -172,7 +171,7 @@
     opacity: 1;
   }
 
-  .btn {
+  .not-found-btn {
     z-index: 1;
     overflow: hidden;
     background: transparent;
@@ -188,35 +187,34 @@
     margin: 5px 0px;
   }
 
-  .btn.green {
-    border: 1px solid var(--green);
-    color: var(--blue);
+  .not-found-btn.green {
+    border: 1px solid @green;
+    color: @black;
   }
 
-  .btn.green:before {
+  .not-found-btn.green:before {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
     width: 0%;
     height: 100%;
-    background: var(--green);
+    background: @green;
     z-index: -1;
     -webkit-transition: 0.2s ease;
     transition: 0.2s ease;
   }
 
-  .btn.green:hover {
-    color: var(--white);
-    background: var(--green);
+  .not-found-btn.green:hover {
+    color: @white;
+    background: @green;
     -webkit-transition: 0.2s ease;
     transition: 0.2s ease;
   }
 
-  .btn.green:hover:before {
+  .not-found-btn.green:hover:before {
     width: 100%;
   }
-
 
 }
 
