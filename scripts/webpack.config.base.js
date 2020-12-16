@@ -1,18 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const CopyWebpackPlugin = require("copy-webpack-plugin")
-const ProgressBar = require('progress-bar-webpack-plugin');
-// tslint
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// css分离
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin'); // tslint
+const ProgressBar = require('progress-bar-webpack-plugin'); // 进度条
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css分离
 const Path = require('path');
 const Chalk = require('chalk');
 
 function resolve(path) {
   return Path.resolve(__dirname, path);
 }
-
+const isDev = process.env.NODE_ENV !== 'production';
 /** @type {import('webpack').Configuration} */
 const WebpackBaseConfig = {
   mode: 'development',
@@ -30,13 +28,13 @@ const WebpackBaseConfig = {
         use: {
           loader: 'ts-loader',
           options: {
-            transpileOnly: true,
+						transpileOnly: true,
           },
         },
       },
       {
         test: /.(cs|les)s$/,
-        use: [process.env.NODE_ENV === 'production' && MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'].filter(Boolean),
+        use: [!isDev && MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'].filter(Boolean),
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -58,9 +56,9 @@ const WebpackBaseConfig = {
   plugins: [
     // 打包进度条
     new ProgressBar({
-      format: Chalk.green.bold('build  ') + '[:bar]' + Chalk.cyan.bold(':percent') + ' (' + Chalk.blue.magenta(':elapsed') + ' seconds) ',
-      clear: false,
-    }),
+      format: Chalk.green.bold('build  ') + Chalk.blueBright('[:bar]') + Chalk.cyan.bold(':percent') + ' (' + Chalk.blue.magenta(':elapsed') + ' seconds) ',
+			clear: true,
+		}),
     // 清除dist
     new CleanWebpackPlugin(),
     // Html模板
@@ -75,7 +73,7 @@ const WebpackBaseConfig = {
         configFile: resolve('../tsconfig.json'),
         build: false,
       },
-		}),
+    }),
     // copy静态文件
     // new CopyWebpackPlugin({
     // 	patterns: [
