@@ -1,5 +1,6 @@
 const WebpackBaseConfig = require('./webpack.config.base');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // 代码分析报告
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const { merge } = require('webpack-merge');
 const Path = require('path');
 
@@ -13,13 +14,17 @@ module.exports = merge(WebpackBaseConfig, {
     host: 'localhost',
     hot: true,
     contentBase: Path.join(__dirname, '../dist/'),
-    overlay: true,
+    overlay: false,
   },
   plugins: [
     new BundleAnalyzerPlugin({
       analyzerMode: isBundle ? 'static' : 'disabled',
       generateStatsFile: false,
     }),
+    // react 热加载
+    new ReactRefreshWebpackPlugin({
+      overlay: false
+    })
   ],
   // 减少体积 提高性能
   optimization: {

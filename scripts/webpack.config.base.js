@@ -15,26 +15,21 @@ const isDev = process.env.NODE_ENV !== 'production';
 const WebpackBaseConfig = {
   mode: 'development',
   entry: resolve('../src/index.tsx'),
-  output: {
-    path: resolve('../dist'),
-    filename: 'js/[name].[hash].js',
-    publicPath: '/',
-  },
   module: {
     rules: [
       {
         test: /.(t|j)sx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'ts-loader',
+          loader: 'babel-loader',
           options: {
-						transpileOnly: true,
-          },
+            plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean)
+          }
         },
       },
       {
         test: /.(cs|les)s$/,
-        use: [!isDev && MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'].filter(Boolean),
+        use: [!isDev ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'less-loader'].filter(Boolean),
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -43,7 +38,7 @@ const WebpackBaseConfig = {
     ],
   },
   resolve: {
-    extensions: ['.json', '.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.json', '.ts', '.tsx', '.js', '.jsx', '.less'],
     alias: {
       '@': resolve('../src'),
       '@redux': resolve('../src/redux'),
@@ -57,8 +52,8 @@ const WebpackBaseConfig = {
     // 打包进度条
     new ProgressBar({
       format: Chalk.green.bold('build  ') + Chalk.blueBright('[:bar]') + Chalk.cyan.bold(':percent') + ' (' + Chalk.blue.magenta(':elapsed') + ' seconds) ',
-			clear: true,
-		}),
+      clear: true,
+    }),
     // 清除dist
     new CleanWebpackPlugin(),
     // Html模板

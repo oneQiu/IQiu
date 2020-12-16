@@ -6,8 +6,17 @@ const TerserWwebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssets = require('optimize-css-assets-webpack-plugin');
 // const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Path = require('path');
 
+function resolve(path) {
+  return Path.resolve(__dirname, path);
+}
 module.exports = merge(WebpakBaseConfig, {
+  output: {
+    path: resolve('../dist'),
+    filename: 'js/[name].[hash].js',
+    publicPath: '/',
+  },
   devtool: 'source-map',
   optimization: {
     minimizer: [
