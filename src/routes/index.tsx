@@ -1,6 +1,8 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { TRouteConfig } from './config';
+
+const _404 = lazy(() => import('@components/404'));
 interface IProps {
     /**
      * 路由原信息 参数优先级大于routers
@@ -58,6 +60,8 @@ export default class RouteView extends Component<IProps, IState> {
                         />
                     ))}
                     {renderRedirct}
+                    {/* 404组件 */}
+                    <Route path="/*" component={_404} />
                 </Switch>
             </Suspense>
         );

@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const CopyWebpackPlugin = require("copy-webpack-plugin")
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin'); // tslint
 const ProgressBar = require('progress-bar-webpack-plugin'); // 进度条
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css分离
@@ -15,6 +15,9 @@ const isDev = process.env.NODE_ENV !== 'production';
 const WebpackBaseConfig = {
     mode: 'development',
     entry: resolve('../src/index.tsx'),
+    output: {
+        publicPath: '/',
+    },
     module: {
         rules: [
             {
@@ -88,16 +91,14 @@ const WebpackBaseConfig = {
             },
         }),
         // copy静态文件
-        // new CopyWebpackPlugin({
-        // 	patterns: [
-        // 		{
-        // 			from: "/src/*/*.html",
-        // 			globOptions: {
-        // 				dot: true,
-        // 			}
-        // 		}
-        // 	]
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: resolve('../src/static'),
+                    to: 'static',
+                },
+            ],
+        }),
     ],
 };
 

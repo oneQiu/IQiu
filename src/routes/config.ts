@@ -8,7 +8,6 @@ import { LocationDescriptor } from 'history';
 
 // 引入页面
 const Index = lazy(() => import('@pages/index'));
-const _404 = lazy(() => import('@components/404'));
 
 interface TMyRouteState {
     key: string;
@@ -31,14 +30,6 @@ const routeConfig: TRouteConfig = [
         exact: true,
         title: '首页',
         component: Index,
-    },
-    {
-        key: '404',
-        path: '/404',
-        exact: true,
-        title: 'Oh,404?',
-        component: _404,
-        redirct: '/404',
     },
 ];
 export default routeConfig;

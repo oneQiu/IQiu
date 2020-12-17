@@ -4,7 +4,14 @@ interface IProps {
     title: string;
 }
 const Sidebar: React.FC<IProps> = () => {
-    return <div>123</div>;
+    return (
+        <div>
+            <div>
+                <img src="./static/logo.png" alt="logo" width="80" />
+                这里是Icons
+            </div>
+        </div>
+    );
 };
 
 export default Sidebar;
