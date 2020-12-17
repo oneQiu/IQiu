@@ -13,7 +13,7 @@ module.exports = {
         },
     },
     rules: {
-        'no-var-requires': 0,
+        '@typescript-eslint/no-var-requires': 0,
         // 该规则开启会导致render报错
         '@typescript-eslint/explicit-module-boundary-types': 0,
         // 关闭props-types ts不需要这b

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TUserState } from '@redux/user/types';
+import { Button } from 'antd';
 
 /**
  * 首页框架
@@ -13,7 +14,12 @@ class Index extends Component<IProps> {
         console.log(this.props);
     }
     render() {
-        return <h2>test</h2>;
+        return (
+            <div>
+                <h2>首页</h2>
+                <Button type="dashed">Click</Button>
+            </div>
+        );
     }
 }
 

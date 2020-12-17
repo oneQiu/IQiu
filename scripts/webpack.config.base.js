@@ -29,9 +29,16 @@ const WebpackBaseConfig = {
             },
             {
                 test: /.(cs|les)s$/,
-                use: [!isDev ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'less-loader'].filter(
-                    Boolean,
-                ),
+                use: [
+                    !isDev ? MiniCssExtractPlugin.loader : 'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: { javascriptEnabled: true },
+                        },
+                    },
+                ].filter(Boolean),
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
