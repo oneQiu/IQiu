@@ -10,13 +10,18 @@
     "strict": true,
     "esModuleInterop": true,
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./src/*"],
       "@redux/*": ["./src/redux/*"],
       "@pages/*": ["./src/pages/*"],
       "@components/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"],
       "@routes/*": ["./src/routes/*"],
-    }
+      "@styles/*": ["./src/styles/*"],
+      "@configs/*": ["./src/configs/*"],
+      "@typings/*": ["./src/typings/*"],
+    },
+    // 设置类型目录 无需导入
+    "typeRoots": ["./src/typings"]
   },
   "include": ["./src"]
 }

@@ -16,11 +16,11 @@ class Index extends Component<IProps> {
     render() {
         return (
             <Layout className="layout-warp">
-                <Sider theme="light">
+                <Sider theme="light" width={300}>
                     <Sidebar title="测试" />
                 </Sider>
                 <Layout>
-                    <Header>Header</Header>
+                    <Header color="black">Header</Header>
                     <Content>Content</Content>
                 </Layout>
             </Layout>

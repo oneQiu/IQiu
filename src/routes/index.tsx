@@ -1,22 +1,22 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { TRouteConfig } from './config';
+import { TRoute } from '@typings/route';
 
 const _404 = lazy(() => import('@components/404'));
 interface IProps {
     /**
      * 路由原信息 参数优先级大于routers
      */
-    defaultConfig?: TRouteConfig;
+    defaultConfig?: TRoute.TRouteConfig;
     /**
      * 子路由信息传递下去
      */
-    routers?: TRouteConfig;
+    routers?: TRoute.TRouteConfig;
 }
 
 interface IState {
-    redirctRoutes: TRouteConfig;
-    basisRoutes: TRouteConfig;
+    redirctRoutes: TRoute.TRouteConfig;
+    basisRoutes: TRoute.TRouteConfig;
 }
 
 /**

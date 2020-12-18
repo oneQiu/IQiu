@@ -58,6 +58,9 @@ const WebpackBaseConfig = {
             '@components': resolve('../src/components'),
             '@utils': resolve('../src/utils'),
             '@routes': resolve('../src/routes'),
+            '@styles': resolve('../src/styles'),
+            '@configs': resolve('../src/configs'),
+            '@typings': resolve('../src/typings'),
         },
     },
     plugins: [
