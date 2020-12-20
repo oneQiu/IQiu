@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IconFont from '@styles/icon';
 // 引入路由
 import homeRouteConfig from '@routes/home';
 import './index.less';
 import { keyToPath } from '@utils/public';
+import { useHistory, useLocation } from 'react-router-dom';
 
 interface IProps {
     title: string;
 }
 const Sidebar: React.FC<IProps> = () => {
+    const history = useHistory();
+    const location = useLocation();
+    // 当前路由高亮
+    const [active, setActive] = useState('');
     const sidebarArr = homeRouteConfig.filter((i) => i.sidebarOpts);
     // 路由跳转
-    const onToMenu = (path?: string | string[]) => {
-        console.log(path);
-        keyToPath('');
+    const onToMenu = (key: string) => {
+        const path = keyToPath(key);
+        path && history.push(path);
     };
+    console.log(location);
     return (
         <div className="sidebar-warp">
             <div className="logo-warp">
@@ -22,10 +28,10 @@ const Sidebar: React.FC<IProps> = () => {
                 <div className="logo-name">QiuSound</div>
             </div>
             <div className="sidebar-menu">
-                {sidebarArr.map(({ sidebarOpts, key, path }) => {
+                {sidebarArr.map(({ sidebarOpts, key }) => {
                     return (
                         sidebarOpts && (
-                            <div className="sidebar-menu-item" key={key} onClick={() => onToMenu(path)}>
+                            <div className="sidebar-menu-item" key={key} onClick={() => onToMenu(key)}>
                                 <div className="sidebar-menu-item-icon">
                                     <IconFont type={sidebarOpts.iconType} />
                                 </div>
@@ -34,12 +40,6 @@ const Sidebar: React.FC<IProps> = () => {
                         )
                     );
                 })}
-                <div className="sidebar-menu-item">
-                    <div className="sidebar-menu-item-icon">
-                        <IconFont type="icon-icon_A" />
-                    </div>
-                    <div className="sidebar-menu-item-text">文章</div>
-                </div>
             </div>
         </div>
     );

@@ -7,5 +7,12 @@
     // 指定vscode的eslint所处理的文件的后缀
     "extensions": [".js", ".jsx", ".ts", ".tsx"]
   },
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ],
+  "files.eol": "\n",
 }

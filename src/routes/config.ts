@@ -4,17 +4,21 @@
 
 import { TRoute } from '@typings/route';
 // 引入页面
-import Index from '@pages/home/index';
+import Home from '@pages/home/index';
 import homeRouteConfig from './home';
 
 const routeConfig: TRoute.TRouteConfig = [
     {
-        key: 'Index',
+        key: 'Home',
         path: '/',
-        exact: true,
-        component: Index,
+        component: Home,
         children: homeRouteConfig,
     },
 ];
+
+/**
+ * 默认一级路由
+ */
+export const defaultPath = '/';
 
 export default routeConfig;

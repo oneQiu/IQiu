@@ -5,13 +5,13 @@ import { TRoute } from '@typings/route';
 const _404 = lazy(() => import('@components/404'));
 interface IProps {
     /**
-     * 路由原信息 参数优先级大于routers
+     * 路由原信息 参数优先级大于routes
      */
     defaultConfig?: TRoute.TRouteConfig;
     /**
      * 子路由信息传递下去
      */
-    routers?: TRoute.TRouteConfig;
+    routes?: TRoute.TRouteConfig;
 }
 
 interface IState {
@@ -25,8 +25,8 @@ interface IState {
 export default class RouteView extends Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
-        const { defaultConfig, routers } = this.props;
-        const config = (defaultConfig ? defaultConfig : routers) || [];
+        const { defaultConfig, routes } = this.props;
+        const config = (defaultConfig ? defaultConfig : routes) || [];
         // 筛选具有重定向的路由
         const redirctRoutes = config.filter((route) => route.redirct);
         // 筛选不具有重定向的基础路由
