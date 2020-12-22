@@ -3,7 +3,7 @@
     "watch": true,
     "jsx": "react",
     "target": "ES5",
-    "lib": ["DOM", "ESNext"],
+    "lib": ["DOM", "ES2020"],
     "sourceMap": true,
     "allowJs": false,
     "baseUrl": "./",

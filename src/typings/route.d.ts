@@ -31,6 +31,7 @@ declare namespace TRoute {
          * 侧边栏选项
          */
         sidebarOpts?: TSidebarOpts;
+        children?: TRouteConfig;
     }
     export type TRouteConfig = Array<RouteProps & TMyRouteState>;
 }

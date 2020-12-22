@@ -30,6 +30,16 @@ const homeRouteConfig: TRoute.TRouteConfig = [
         key: 'Home_User',
         path: '/home/user',
         component: User,
+        children: [
+            {
+                key: 'Home_User_A',
+                path: '/home/user/A',
+            },
+            {
+                key: 'Home_User_B',
+                path: '/home/user/B',
+            },
+        ],
         sidebarOpts: {
             iconType: 'icon-yonghuming',
             menuText: '用户',
@@ -43,6 +53,16 @@ const homeRouteConfig: TRoute.TRouteConfig = [
             iconType: 'icon-iconguifanbeifen',
             menuText: '设置',
         },
+        children: [
+            {
+                key: 'Home_Setting_A',
+                path: '/home/setting/A',
+            },
+            {
+                key: 'Home_Setting_B',
+                path: '/home/setting/B',
+            },
+        ],
     },
 ];
 export default homeRouteConfig;
