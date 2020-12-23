@@ -15,13 +15,38 @@ interface IProps {
     name?: string;
     routes: TRoute.TRouteConfig;
 }
-class Index extends Component<IProps> {
+
+interface IStates {
+    menuData?: TMenuData;
+}
+class Index extends Component<IProps, IStates> {
+    constructor(props: IProps) {
+        super(props);
+        const { routes } = props;
+        this.state = {
+            menuData: this.onFormatMenuData(routes),
+        };
+    }
+
+    onFormatMenuData(data: TRoute.TRouteConfig): TMenuData {
+        const menuData = data.map((i) => ({
+            key: i.key,
+            iconType: i.sidebarOpts?.iconType || '',
+            menuText: i.sidebarOpts?.menuText || '',
+            hasChild: i.children && i.children.length > 0,
+            toPath: i.path as string,
+            children: i.children?.length ? this.onFormatMenuData(i.children) : [],
+        }));
+        return menuData;
+    }
+
     render() {
         const { routes } = this.props;
+        const { menuData = [] } = this.state;
         return (
             <Layout className="layout-warp">
                 <Sider theme="light" width={300}>
-                    <Sidebar title="测试" />
+                    <Sidebar menuData={menuData} />
                 </Sider>
                 <Layout>
                     <Header>Header</Header>
