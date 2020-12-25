@@ -1,8 +1,8 @@
-import indexReducer from './user';
+import userReducer from './user';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    index: indexReducer,
+    userInfo: userReducer,
 });
 export default rootReducer;
 export type RootReducer = ReturnType<typeof rootReducer>;

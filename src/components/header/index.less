@@ -1,0 +1,40 @@
+.header-warp {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-input-warp {
+    width: 350px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .user-warp {
+    .user-login {
+      display: flex;
+      align-items: center;
+
+      .user-login-notify {
+        font-size: 26px;
+        cursor: pointer;
+
+        &:hover {
+          color: red;
+        }
+      }
+
+      .user-login-avatar {
+        margin-left: 25px;
+        cursor: pointer;
+        transition: all .2s linear;
+        border: 1px solid white ;
+
+        &:hover{
+          border: 1px solid #FDE3CF;
+        }
+      }
+    }
+  }
+}

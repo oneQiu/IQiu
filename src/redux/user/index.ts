@@ -1,19 +1,17 @@
-import { TUserActionTypes, SET_NAME, TUserState } from './types';
+import { SET_NAME, TUserState, TUserAction, SET_USERINFO } from './types';
 
 const initState: TUserState = {
     username: '',
+    gender: 0,
 };
 
-// reducer对象化
-const reducer = {
-    [SET_NAME]: (state = initState, action: TUserActionTypes) => ({
-        ...state,
-        username: action.username,
-    }),
-};
-
-export default (state = initState, action: TUserActionTypes): TUserState => {
-    const re = reducer[action.type];
-    const newState = typeof re === 'function' ? re(state, action) : state;
-    return newState;
+export default (state = initState, action: TUserAction): TUserState => {
+    switch (action.type) {
+        case SET_NAME:
+            return { ...state, username: action.username };
+        case SET_USERINFO:
+            return { ...state, ...action.userInfo };
+        default:
+            return state;
+    }
 };

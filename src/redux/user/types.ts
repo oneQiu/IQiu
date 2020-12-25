@@ -1,19 +1,31 @@
+// type name -------
 export const SET_NAME = 'SET_NAME';
 export type SET_NAME = typeof SET_NAME; // store类型
 
+export const SET_USERINFO = 'SET_USERINFO';
+export type SET_USERINFO = typeof SET_USERINFO;
+
+export type TUserActionType = SET_USERINFO | SET_NAME;
+
 // action类型 ---------
-interface TSetNameAction {
+export interface TSetNameAction {
     type: SET_NAME;
     username: string;
 }
-export type TUserActionTypes = TSetNameAction;
+export interface TSetUserInfoAction {
+    type: SET_USERINFO;
+    userInfo: {
+        username: string;
+        gender: number;
+    };
+}
 
 // state -----------
 export interface TUserState {
     username: string;
+    gender: number;
+    avatarUrl?: string;
 }
-// action类型
-export interface TAction {
-    type: TUserActionTypes;
-    data: Record<string, unknown>;
-}
+
+// 标准action类型
+export type TUserAction = TSetNameAction | TSetUserInfoAction;

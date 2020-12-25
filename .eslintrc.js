@@ -18,7 +18,7 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 0,
         // 关闭props-types ts不需要这b
         'react/prop-types': 0,
-        indent: ['warn', 4],
+        // indent: ['warn', 4],
     },
     settings: {
         react: {

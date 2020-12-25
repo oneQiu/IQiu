@@ -6,6 +6,7 @@ import Sidebar from '@components/sidebar';
 import './index.less';
 import { TRoute } from '@/typings/route';
 import RouteView from '@/routes';
+import Head from '@components/header';
 
 const { Sider, Header, Content } = Layout;
 /**
@@ -48,9 +49,11 @@ class Index extends Component<IProps, IStates> {
                 <Sider theme="light" width={300}>
                     <Sidebar menuData={menuData} />
                 </Sider>
-                <Layout>
-                    <Header>Header</Header>
-                    <Content>
+                <Layout className="layout-right layout-white-bg">
+                    <Header className="layout-white-bg layout-header">
+                        <Head />
+                    </Header>
+                    <Content className="layout-content">
                         <RouteView routes={routes} />
                     </Content>
                 </Layout>
