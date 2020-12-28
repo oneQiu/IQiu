@@ -1,9 +1,10 @@
+import { Dispatch } from 'react';
 import { SET_NAME, TUserAction } from './types';
 
-export const setName = async (newName: string): Promise<TUserAction> => {
-    const res = await newName;
-    return {
+export const setName = (newName: string) => (dispatch: Dispatch<TUserAction>) => {
+    console.log(newName);
+    dispatch({
         type: SET_NAME,
-        username: res,
-    };
+        username: newName,
+    });
 };

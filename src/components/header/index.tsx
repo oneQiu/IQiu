@@ -1,22 +1,23 @@
 import { RootReducer } from '@/redux/reducers';
-import { TUserAction, TUserState } from '@/redux/user/types';
 import IconFont from '@/styles/icon';
 import { Badge, Input, Button, Tag } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
-import React, { useState } from 'react';
-import { Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import './index.less';
+import React, { useCallback, useState } from 'react';
 import { setName } from '@/redux/user/actionCreate';
+import { useSelector, useDispatch } from 'react-redux';
+import './index.less';
 
 const { Search } = Input;
 
 interface IProps {
     onSearch?: () => void;
-    userInfo: TUserState;
 }
 
-const Header: React.FC<IProps> = ({ userInfo }) => {
+const Header: React.FC<IProps> = () => {
+    // redux hooks
+    const userInfo = useSelector((state: RootReducer) => state.userInfo);
+    const dispatch = useDispatch();
+    const setNameCb = useCallback((name: string) => dispatch(setName(name)), [dispatch]);
     const [loading, setLoading] = useState(false);
     // 性别 1 男 2 女
     const [gender] = useState(2);
@@ -33,6 +34,11 @@ const Header: React.FC<IProps> = ({ userInfo }) => {
     const getAvatarDom = () => {
         if (avatarUrl) return '';
         return <IconFont type={gender === 1 ? 'icon-nan' : 'icon-nv'} className="icon-default-size" />;
+    };
+
+    // 登录
+    const onShowSignIn = () => {
+        setNameCb('v_vflqiu');
     };
 
     return (
@@ -63,7 +69,7 @@ const Header: React.FC<IProps> = ({ userInfo }) => {
                         <Tag color="#2db7f5">{userInfo.username}</Tag>
                     </div>
                 ) : (
-                    <Button shape="round" size="large">
+                    <Button shape="round" size="large" onClick={onShowSignIn}>
                         Sign In
                     </Button>
                 )}
@@ -71,15 +77,4 @@ const Header: React.FC<IProps> = ({ userInfo }) => {
         </div>
     );
 };
-
-const mapStateToProps = ({ userInfo }: RootReducer) => ({
-    userInfo,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<TUserAction>) => ({
-    setName: async (username: string) => {
-        dispatch(await setName(username));
-    },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
