@@ -66,7 +66,9 @@ const Header: React.FC<IProps> = () => {
                             size={38}
                             icon={getAvatarDom()}
                         />
-                        <Tag color="#2db7f5">{userInfo.username}</Tag>
+                        <Tag color="#2db7f5" className="user-login-tag-name">
+                            {userInfo.username}
+                        </Tag>
                     </div>
                 ) : (
                     <Button shape="round" size="large" onClick={onShowSignIn}>
