@@ -22,9 +22,8 @@ const Card: React.FC<IProps> = ({ imgUrl, title, subTitle, views = 0, forwards =
         <div className="card-warp">
             <Image
                 src={imgUrl}
-                width={150}
-                height={150}
-                fallback="https://pikaq-1257508274.cos.ap-shenzhen-fsi.myqcloud.com/123.png"
+                width={100}
+                fallback="https://pikaq-1257508274.cos.ap-shenzhen-fsi.myqcloud.com/image/1213.png"
             />
             <div className="card-details-warp">
                 <div className="card-details-title">{title || '--'}</div>

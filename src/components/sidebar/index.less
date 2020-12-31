@@ -1,15 +1,18 @@
 @import '../../styles/index.less';
 
-.sidebar-warp {
+.sidebar-box {
   height: 100%;
-  background-color: @theme-normal-bg;
+  background-color: @barbgColor-default;
   overflow: hidden;
   border-right: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
 
   .logo-warp {
     display: flex;
     align-items: center;
-    margin: 30px 0;
+    justify-content: center;
+    margin: 30px auto;
 
     .logo-name {
       color: black;
@@ -24,54 +27,19 @@
     }
   }
 
-  .sidebar-menu {
-    margin-top: 100px;
+  .sidebar-list {
+    .sidebar-list-item {
+      color: @barFontColor-default;
 
-    .sidebar-menu-item {
-      display: flex;
-      background-color: @theme-normal-bg;
-      align-items: center;
-      height: 60px;
-      transition: all .3s linear;
-      cursor: pointer;
-
-      &:hover {
-        color: #50C1E9;
-      }
-
-      .sidebar-menu-item-icon {
-        font-size: 26px;
-        margin: 0 20px 0 40px;
-      }
-
-      .sidebar-menu-item-sub {
-        font-size: 26px;
-        margin: 0 20px 0 60px;
+      .sidebar-list-item-inner {
+        background: red;
+        width: 64px;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        border-radius: 20px;
       }
     }
-
-    .active {
-      background-color: rgba(91, 231, 196, .2);
-      color: #50C1E9;
-    }
-  }
-
-  // 子菜单展开动画
-  .sub-menu-enter {
-    opacity: 0;
-    height: 0;
-  }
-  .sub-menu-enter-active {
-    height: 100px;
-    transition: all .2s ease-in;
-  }
-  .sub-menu-exit { 
-    opacity: 1;
-    height: 100px;
-  }
-  .sub-menu-exit-active {
-    opacity: 0;
-    height: 0;
-    transition: all .2s ease-out;
   }
 }

@@ -1,10 +1,8 @@
 const WebpackBaseConfig = require('./webpack.config.base');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // 代码分析报告
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { merge } = require('webpack-merge');
 const Path = require('path');
 
-const isBundle = process.env.NODE_ENV === 'bundle';
 module.exports = merge(WebpackBaseConfig, {
     devtool: 'eval-source-map',
     devServer: {
@@ -17,10 +15,6 @@ module.exports = merge(WebpackBaseConfig, {
         overlay: false,
     },
     plugins: [
-        new BundleAnalyzerPlugin({
-            analyzerMode: isBundle ? 'static' : 'disabled',
-            generateStatsFile: false,
-        }),
         // react 热加载
         new ReactRefreshWebpackPlugin({
             overlay: false,

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config scripts/webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config scripts/webpack.config.js",
-    "bundle": "cross-env NODE_ENV=bundle webpack --config scripts/webpack.config.js",
+    "bundle": "cross-env NODE_ENV=production Bundle=1 webpack --config scripts/webpack.config.js",
     "eslint-fix": "eslint ./src/**/*.{js,ts,tsx,jsx} --fix"
   },
   "repository": {

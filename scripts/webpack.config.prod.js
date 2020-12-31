@@ -6,11 +6,15 @@ const TerserWwebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssets = require('optimize-css-assets-webpack-plugin');
 // const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// 代码分析报告
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Path = require('path');
 
 function resolve(path) {
     return Path.resolve(__dirname, path);
 }
+const isBundle = !!process.env.Bundle;
+console.log(isBundle);
 module.exports = merge(WebpakBaseConfig, {
     output: {
         path: resolve('../dist'),
@@ -30,6 +34,10 @@ module.exports = merge(WebpakBaseConfig, {
         // new CssMinimizerWebpackPlugin({
         //   parallel: true
         // }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: isBundle ? 'static' : 'disabled',
+            generateStatsFile: false,
+        }),
         new OptimizeCssAssets({
             assetNameRegExp: /\.css\.*(?!.*map)/g,
             cssProcessorOptions: {

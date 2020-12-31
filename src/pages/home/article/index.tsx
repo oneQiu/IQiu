@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '@components/card';
-import { Button, Empty } from 'antd';
+import { Button, List, Empty, Image } from 'antd';
 import './index.less';
 
 const Article: React.FC = () => {
@@ -34,7 +34,27 @@ const Article: React.FC = () => {
                             <Card imgUrl="" key={i.id} title={i.title} subTitle={i.subTitle} />
                         ))}
                     </div>
-                    <div className="article-top">1</div>
+                    <div className="article-top">
+                        <List size="large">
+                            <List.Item>
+                                <List.Item.Meta
+                                    avatar={
+                                        <Image
+                                            width={100}
+                                            src="https://pikaq-1257508274.cos.ap-shenzhen-fsi.myqcloud.com/image/1213.png"
+                                            fallback="https://pikaq-1257508274.cos.ap-shenzhen-fsi.myqcloud.com/image/1213.png"
+                                        />
+                                    }
+                                    title="test"
+                                    description="v_vflqiu create it is"
+                                />
+                                aslkjdlkasjkldjaklsjdlkjaklskldja
+                            </List.Item>
+                            <List.Item>2</List.Item>
+                            <List.Item>3</List.Item>
+                            <List.Item>4</List.Item>
+                        </List>
+                    </div>
                 </div>
             )}
         </div>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TUserState } from '@redux/user/types';
-import { Layout } from 'antd';
-import Sidebar from '@components/sidebar';
+import { Button, Layout } from 'antd';
+import Sidebar from '@/components/sidebar';
 import './index.less';
 import { TRoute } from '@/typings/route';
 import RouteView from '@/routes';
@@ -19,6 +19,7 @@ interface IProps {
 
 interface IStates {
     menuData?: TMenuData;
+    siderCollapsed: boolean;
 }
 class Index extends Component<IProps, IStates> {
     constructor(props: IProps) {
@@ -26,6 +27,7 @@ class Index extends Component<IProps, IStates> {
         const { routes } = props;
         this.state = {
             menuData: this.onFormatMenuData(routes),
+            siderCollapsed: false,
         };
     }
 
@@ -34,7 +36,7 @@ class Index extends Component<IProps, IStates> {
             key: i.key,
             iconType: i.sidebarOpts?.iconType || '',
             menuText: i.sidebarOpts?.menuText || '',
-            hasChild: i.children && i.children.length > 0,
+            hasChild: !!(i.children && i.children.length > 0),
             toPath: i.path as string,
             children: i.children?.length ? this.onFormatMenuData(i.children) : [],
         }));
@@ -43,11 +45,21 @@ class Index extends Component<IProps, IStates> {
 
     render() {
         const { routes } = this.props;
-        const { menuData = [] } = this.state;
+        const { menuData = [], siderCollapsed } = this.state;
         return (
             <Layout className="layout-warp">
-                <Sider theme="light" width={300}>
+                <Sider theme="light" trigger={null} collapsed={siderCollapsed}>
                     <Sidebar menuData={menuData} />
+                    <Button
+                        onClick={() =>
+                            this.setState({
+                                siderCollapsed: !siderCollapsed,
+                            })
+                        }
+                        style={{ position: 'absolute', bottom: 20 }}
+                    >
+                        Close
+                    </Button>
                 </Sider>
                 <Layout className="layout-right layout-white-bg">
                     <Header className="layout-white-bg layout-header">
