@@ -33,12 +33,10 @@ const SideBar: React.FC<IProps> = ({ menuData }) => {
                     if (i.hasChild && i.children && i.children.length > 0) {
                         return (
                             <SubMenu key={i.key} title={i.menuText} icon={<IconFont type={i.iconType} />}>
-                                {i.children.map((it) => <Menu.Item>{it.menuText}</Menu.Item>}
+                                {i.children.map((it) => (
+                                    <Menu.Item key={it.key}>{it.key}</Menu.Item>
+                                ))}
                                 {/* {menuItemRender(i.children[0])} */}
-                                <Menu.Item key="5">Option 5</Menu.Item>
-                                <Menu.Item key="6">Option 6</Menu.Item>
-                                <Menu.Item key="7">Option 7</Menu.Item>
-                                <Menu.Item key="8">Option 8</Menu.Item>
                             </SubMenu>
                         );
                     } else {
