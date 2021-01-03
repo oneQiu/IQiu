@@ -15,6 +15,10 @@ declare namespace TRoute {
          * 菜单名
          */
         menuText: string;
+        /**
+         * 是否禁用
+         */
+        disabled?: boolean;
     }
     interface TMyRouteState {
         key: string;

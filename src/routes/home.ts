@@ -34,10 +34,19 @@ const homeRouteConfig: TRoute.TRouteConfig = [
             {
                 key: 'Home_User_A',
                 path: '/home/user/A',
+                sidebarOpts: {
+                    iconType: 'icon-yinle',
+                    menuText: '测试雷声大',
+                    disabled: true,
+                },
             },
             {
                 key: 'Home_User_B',
                 path: '/home/user/B',
+                sidebarOpts: {
+                    iconType: 'icon-yinle',
+                    menuText: 'asd2',
+                },
             },
         ],
         sidebarOpts: {
@@ -57,10 +66,18 @@ const homeRouteConfig: TRoute.TRouteConfig = [
             {
                 key: 'Home_Setting_A',
                 path: '/home/setting/A',
+                sidebarOpts: {
+                    iconType: 'icon-yinle',
+                    menuText: '12312',
+                },
             },
             {
                 key: 'Home_Setting_B',
                 path: '/home/setting/B',
+                sidebarOpts: {
+                    iconType: 'icon-yinle',
+                    menuText: '44',
+                },
             },
         ],
     },

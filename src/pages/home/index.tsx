@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TUserState } from '@redux/user/types';
-import { Button, Layout } from 'antd';
+import { Layout } from 'antd';
 import Sidebar from '@/components/sidebar';
 import './index.less';
 import { TRoute } from '@/typings/route';
@@ -32,34 +32,35 @@ class Index extends Component<IProps, IStates> {
     }
 
     onFormatMenuData(data: TRoute.TRouteConfig): TMenuData {
-        const menuData = data.map((i) => ({
-            key: i.key,
-            iconType: i.sidebarOpts?.iconType || '',
-            menuText: i.sidebarOpts?.menuText || '',
-            hasChild: !!(i.children && i.children.length > 0),
-            toPath: i.path as string,
-            children: i.children?.length ? this.onFormatMenuData(i.children) : [],
-        }));
+        const menuData = data
+            .filter((i) => i.sidebarOpts)
+            .map((i) => ({
+                key: i.key,
+                iconType: i.sidebarOpts?.iconType || '',
+                menuText: i.sidebarOpts?.menuText || '',
+                hasChild: !!(i.children && i.children.length > 0),
+                toPath: i.path as string,
+                children: i.children?.length ? this.onFormatMenuData(i.children) : [],
+                disabled: i.sidebarOpts?.disabled,
+            }));
         return menuData;
     }
+
+    onCloseMenu = () =>
+        this.setState(
+            {
+                siderCollapsed: !this.state.siderCollapsed,
+            },
+            () => console.log('??'),
+        );
 
     render() {
         const { routes } = this.props;
         const { menuData = [], siderCollapsed } = this.state;
         return (
             <Layout className="layout-warp">
-                <Sider theme="light" trigger={null} collapsed={siderCollapsed}>
-                    <Sidebar menuData={menuData} />
-                    <Button
-                        onClick={() =>
-                            this.setState({
-                                siderCollapsed: !siderCollapsed,
-                            })
-                        }
-                        style={{ position: 'absolute', bottom: 20 }}
-                    >
-                        Close
-                    </Button>
+                <Sider theme="light" trigger={null} width={256} collapsed={siderCollapsed}>
+                    <Sidebar menuData={menuData} onClose={this.onCloseMenu} />
                 </Sider>
                 <Layout className="layout-right layout-white-bg">
                     <Header className="layout-white-bg layout-header">

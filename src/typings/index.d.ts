@@ -9,6 +9,7 @@ interface TMenuItem {
     toPath?: string;
     children?: Array<TMenuItem>;
     key: string;
+    disabled?: boolean;
 }
 
 declare type TMenuData = Array<TMenuItem>;

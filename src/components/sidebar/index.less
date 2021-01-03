@@ -1,45 +1,45 @@
 @import '../../styles/index.less';
 
 .sidebar-box {
-  height: 100%;
-  background-color: @barbgColor-default;
-  overflow: hidden;
-  border-right: 1px solid #f0f0f0;
-  display: flex;
-  flex-direction: column;
-
-  .logo-warp {
+    height: 100%;
+    background-color: @barbgColor-default;
+    overflow: hidden;
+    border-right: 1px solid #f0f0f0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px auto;
+    flex-direction: column;
 
-    .logo-name {
-      color: black;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
+    .logo-warp {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 30px auto;
+
+        .logo-name {
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            font-size: 38px;
+            margin: 0 10px 0 40px;
+        }
     }
 
-    .logo-icon {
-      font-size: 38px;
-      margin: 0 10px 0 40px;
-    }
-  }
+    .sidebar-list {
+        .sidebar-list-item {
+            color: @barFontColor-default;
 
-  .sidebar-list {
-    .sidebar-list-item {
-      color: @barFontColor-default;
-
-      .sidebar-list-item-inner {
-        background: red;
-        width: 64px;
-        text-align: center;
-        padding: 10px;
-        box-sizing: border-box;
-        margin: 0 auto;
-        border-radius: 20px;
-      }
+            .sidebar-list-item-inner {
+                background: red;
+                width: 64px;
+                text-align: center;
+                padding: 10px;
+                box-sizing: border-box;
+                margin: 0 auto;
+                border-radius: 20px;
+            }
+        }
     }
-  }
 }

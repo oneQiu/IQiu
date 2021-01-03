@@ -33,7 +33,7 @@ const Header: React.FC<IProps> = () => {
 
     const getAvatarDom = () => {
         if (avatarUrl) return '';
-        return <IconFont type={gender === 1 ? 'icon-nan' : 'icon-nv'} className="icon-default-size" />;
+        return <IconFont type={gender === 1 ? 'icon-nan' : 'icon-nv'} className="icon-default" />;
     };
 
     // 登录

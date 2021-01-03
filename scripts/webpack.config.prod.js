@@ -14,7 +14,6 @@ function resolve(path) {
     return Path.resolve(__dirname, path);
 }
 const isBundle = !!process.env.Bundle;
-console.log(isBundle);
 module.exports = merge(WebpakBaseConfig, {
     output: {
         path: resolve('../dist'),
