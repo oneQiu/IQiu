@@ -9,12 +9,13 @@ const Music = lazy(() => import('@pages/home/music'));
 
 const homeRouteConfig: TRoute.TRouteConfig = [
     {
-        key: 'Home_Article',
-        path: '/home/article',
+        key: 'Home_Index',
+        path: '/home',
+        exact: true,
         component: Article,
         sidebarOpts: {
-            iconType: 'icon-icon_A',
-            menuText: '文章',
+            iconType: 'icon-shouye',
+            menuText: '首页',
         },
     },
     {

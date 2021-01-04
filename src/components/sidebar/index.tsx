@@ -40,7 +40,11 @@ const SideBar: React.FC<IProps> = ({ menuData, onClose }) => {
 
     // 渲染Item
     const menuItemRender = (item: TMenuItem): ReactNode => (
-        <Menu.Item icon={<IconFont type={item.iconType} />} key={item.key} disabled={item.disabled}>
+        <Menu.Item
+            icon={<IconFont type={item.iconType} style={{ fontSize: 18 }} />}
+            key={item.key}
+            disabled={item.disabled}
+        >
             {item.menuText}
         </Menu.Item>
     );
