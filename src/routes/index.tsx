@@ -30,7 +30,7 @@ export default class RouteView extends Component<IProps, IState> {
         // 筛选具有重定向的路由
         const redirctRoutes = config.filter((route) => route.redirct);
         // 筛选不具有重定向的基础路由
-        const basisRoutes = config;
+        const basisRoutes = config.filter((route) => !route.redirct);
         this.state = {
             redirctRoutes,
             basisRoutes,
@@ -39,7 +39,11 @@ export default class RouteView extends Component<IProps, IState> {
 
     render() {
         const { redirctRoutes, basisRoutes } = this.state;
-        const renderRedirct = redirctRoutes.map((i) => i.redirct && <Redirect key={i.key} to={i.redirct} />);
+        const renderRedirct = redirctRoutes.map((i) => {
+            if (!i.redirct) return;
+            const { to, path, exact } = i.redirct;
+            return <Redirect key={i.key} exact={exact} to={to} path={path} />;
+        });
         return (
             <Suspense fallback={<div>Loading</div>}>
                 <Switch>

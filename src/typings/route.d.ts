@@ -1,5 +1,4 @@
-import { LocationDescriptor } from 'history';
-import { RouteProps } from 'react-router-dom';
+import { RedirectProps, RouteProps } from 'react-router-dom';
 declare module '*.less';
 
 /**
@@ -20,13 +19,15 @@ declare namespace TRoute {
          */
         disabled?: boolean;
     }
+
+    /**重定向配置 */
     interface TMyRouteState {
         key: string;
         title?: string;
         /**
-         * 重定向的路由
+         * 是定向
          */
-        redirct?: string | LocationDescriptor;
+        redirct?: RedirectProps;
         /**
          * 是否需要登录态 PS：后续加入角色权限
          */
@@ -37,5 +38,6 @@ declare namespace TRoute {
         sidebarOpts?: TSidebarOpts;
         children?: TRouteConfig;
     }
+
     export type TRouteConfig = Array<RouteProps & TMyRouteState>;
 }

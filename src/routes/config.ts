@@ -6,19 +6,23 @@ import { TRoute } from '@typings/route';
 // 引入页面
 import Home from '@pages/home/index';
 import homeRouteConfig from './home';
+import { defaultPath } from '@configs/index';
 
 const routeConfig: TRoute.TRouteConfig = [
     {
         key: 'Home',
-        path: '/',
+        path: '/home',
         component: Home,
         children: homeRouteConfig,
     },
+    {
+        key: 'Default',
+        redirct: {
+            path: '/',
+            exact: true,
+            to: defaultPath,
+        },
+    },
 ];
-
-/**
- * 默认一级路由
- */
-export const defaultPath = '/';
 
 export default routeConfig;

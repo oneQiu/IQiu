@@ -47,12 +47,9 @@ class Index extends Component<IProps, IStates> {
     }
 
     onCloseMenu = () =>
-        this.setState(
-            {
-                siderCollapsed: !this.state.siderCollapsed,
-            },
-            () => console.log('??'),
-        );
+        this.setState({
+            siderCollapsed: !this.state.siderCollapsed,
+        });
 
     render() {
         const { routes } = this.props;
