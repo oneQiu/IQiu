@@ -7,7 +7,38 @@
     align-items: center;
     justify-content: center;
   }
-  .default-inner{
-    display: flex;
+}
+
+.default-inner {
+  display: flex;
+  justify-content: space-between;
+  background: @bgColor-default;
+
+  .default-inner-left {
+    width: 600px;
+
+    .data-card-box {
+      display: flex;
+      justify-content: space-between;
+
+      .card-base {
+        height: 150px;
+        border-radius: 10px;
+      }
+
+      .card-one {
+        background: #00A0FF;
+        color: white;
+        width: 300px;
+      }
+
+      .card-favorites {
+        background: #63b931;
+      }
+
+      .card-giveme-awesome {
+        background: #bef1ed;
+      }
+    }
   }
 }

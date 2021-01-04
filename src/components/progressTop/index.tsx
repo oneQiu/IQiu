@@ -9,6 +9,11 @@ const ProgressTop: React.FC = () => {
     const start = () => {
         setShow(true);
     };
+
+    const end = () => {
+        setPercent(100);
+        setTimeout(() => setShow(false), 100);
+    };
     return (
         <div className="mine-progress-box">
             <Progress
@@ -38,6 +43,5 @@ const div = document.createElement('div');
 div.id = 'progress';
 document.body.appendChild(div);
 ReactDOM.createPortal(React.createElement(ProgressTop), div);
-console.log(ReactDOM.createPortal(React.createElement(ProgressTop), div));
 
 export default ProgressTop;
