@@ -1,7 +1,7 @@
 // 子路由
 import { TRoute } from '@typings/route';
 import { lazy } from 'react';
-import Article from '@pages/home/article';
+import Default from '@/pages/home/default';
 
 const Setting = lazy(() => import('@pages/home/setting'));
 const User = lazy(() => import('@pages/home/user'));
@@ -12,7 +12,7 @@ const homeRouteConfig: TRoute.TRouteConfig = [
         key: 'Home_Index',
         path: '/home',
         exact: true,
-        component: Article,
+        component: Default,
         sidebarOpts: {
             iconType: 'icon-shouye',
             menuText: '首页',
