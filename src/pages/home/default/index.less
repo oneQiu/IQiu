@@ -1,44 +1,44 @@
 @import '../../../styles/index.less';
 
 .default-box {
-  .empty-warp {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .empty-warp {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .default-inner {
-  display: flex;
-  justify-content: space-between;
-  background: @bgColor-default;
-
-  .default-inner-left {
-    width: 600px;
-
-    .data-card-box {
-      display: flex;
-      justify-content: space-between;
-
-      .card-base {
-        height: 150px;
-        border-radius: 10px;
-      }
-
-      .card-one {
-        background: #00A0FF;
-        color: white;
-        width: 300px;
-      }
-
-      .card-favorites {
-        background: #63b931;
-      }
-
-      .card-giveme-awesome {
-        background: #bef1ed;
-      }
+    height: 100%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 0;
+        display: none;
     }
-  }
+    .inner-card-base {
+        height: 100%;
+    }
+
+    // 左侧卡片
+    .inner-card-left {
+        .card-left-top {
+            display: flex;
+            justify-content: space-between;
+            .card-left-mine-info {
+                width: 450px;
+                margin-right: 20px;
+            }
+            .card-left-carousel {
+                flex: 1;
+            }
+        }
+        .card-left-content {
+            margin-top: 45px;
+            height: 100%;
+            .content-box {
+                height: 100%;
+            }
+        }
+    }
 }

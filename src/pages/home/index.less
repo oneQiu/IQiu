@@ -1,21 +1,24 @@
-@import "@styles/index.less";
+@import '@styles/index.less';
 
 .layout-warp {
-  height: 100%;
-
-  .layout-white-bg {
-    background: @bgColor-default;
-  }
-
-  .layout-header {
-    box-shadow: 0 2px 8px #f0f1f2;
-  }
-
-  // home 内容区域
-  .home-content-warp {
-    padding: 40px 64px;
     height: 100%;
-    background: @content-box-bgColor;
-  }
 
+    .layout-white-bg {
+        background: @bgColor-default;
+    }
+
+    .layout-header {
+        box-shadow: 0 2px 8px #f0f1f2;
+    }
+
+    .layout-content {
+        background: @content-box-bgColor;
+        overflow: hidden;
+    }
+
+    // home 内容区域
+    .home-content-warp {
+        margin: 50px 100px;
+        height: 100%;
+    }
 }

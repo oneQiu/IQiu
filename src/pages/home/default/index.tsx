@@ -1,9 +1,10 @@
-import React from 'react';
-import { Button, Col, Empty, Row, Card, Carousel } from 'antd';
+import React, { ReactNode } from 'react';
+import { Button, Col, Empty, Row, Card, Progress } from 'antd';
 import './index.less';
 
 interface IStates {
     data: string[];
+    tabList: Array<{ key: string; tab: ReactNode }>;
 }
 interface IProps {
     msg?: string;
@@ -13,11 +14,17 @@ export default class Default extends React.Component<IProps, IStates> {
         super(props);
         this.state = {
             data: ['asd'],
+            tabList: [
+                {
+                    key: 'test',
+                    tab: 'Top',
+                },
+            ],
         };
     }
 
     render() {
-        const { data } = this.state;
+        const { data, tabList } = this.state;
         return (
             <div className="home-content-warp default-box">
                 {data.length === 0 ? (
@@ -28,25 +35,30 @@ export default class Default extends React.Component<IProps, IStates> {
                     </div>
                 ) : (
                     <div className="default-inner">
-                        <div className="default-inner-left">
-                            <div className="data-card-box">
-                                <Card className="card-box-shadow card-base card-one">
-                                    <div>21</div>
-                                    <div className="card-one-">hi, v_vflqiu</div>
-                                    <div>访客 查看</div>
-                                </Card>
-                                <Card className="card-box-shadow card-base card-favorites">我的收藏</Card>
-                                <Card className="card-box-shadow card-base card-giveme-awesome">我收到的赞</Card>
-                            </div>
-                        </div>
-                        <div>
-                            <Carousel autoplay>
-                                <div>
-                                    <div style={{ height: '200px', background: '#FFA067' }}>1</div>
+                        <Row gutter={40} style={{ height: '100%' }}>
+                            <Col span={16}>
+                                <div className="card-box-shadow inner-card-left inner-card-base">
+                                    <div className="card-left-top">
+                                        <Card
+                                            className="card-left-mine-info"
+                                            title="Mine Study Plan"
+                                            headStyle={{ border: 'none' }}
+                                        >
+                                            <Progress percent={50} status="active" />
+                                            <Progress percent={70} status="exception" />
+                                            <Progress percent={100} />
+                                        </Card>
+                                        <Card className="card-left-carousel">222</Card>
+                                    </div>
+                                    <div className="card-left-content">
+                                        <Card className="card-box-shadow content-box">Inner</Card>
+                                    </div>
                                 </div>
-                                <div style={{ height: '200px', background: '#4D78CC' }}>12</div>
-                            </Carousel>
-                        </div>
+                            </Col>
+                            <Col span={8}>
+                                <Card className="card-box-shadow  inner-card-right inner-card-base">11</Card>
+                            </Col>
+                        </Row>
                     </div>
                 )}
             </div>
