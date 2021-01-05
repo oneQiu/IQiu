@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Button, Col, Empty, Row, Card, Progress } from 'antd';
+import { Button, Col, Empty, Row, Card, Progress, Statistic } from 'antd';
 import './index.less';
 
 interface IStates {
@@ -44,8 +44,11 @@ export default class Default extends React.Component<IProps, IStates> {
                                             title="Mine Study Plan"
                                             headStyle={{ border: 'none' }}
                                         >
+                                            <Statistic title="Active Users" value={112893} />
                                             <Progress percent={50} status="active" />
+                                            <Statistic title="Active Users" value={112893} />
                                             <Progress percent={70} status="exception" />
+                                            <Statistic title="Active Users" value={112893} />
                                             <Progress percent={100} />
                                         </Card>
                                         <Card className="card-left-carousel">222</Card>
