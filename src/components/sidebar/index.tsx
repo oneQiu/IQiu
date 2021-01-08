@@ -5,7 +5,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import IconFont from '@/styles/icon';
 import './index.less';
 import { keyToPath } from '@/utils/public';
-import ProgressTop from '@/components/progressTop';
+import loading from '../loadingBar';
 const { SubMenu } = Menu;
 
 interface IProps {
@@ -21,7 +21,7 @@ const SideBar: React.FC<IProps> = ({ menuData, onClose }) => {
         defaultOpenKeys: [],
         defaultSelectedKeys: [],
     };
-
+    loading.LoadingBar();
     const findMenuKey = (data: TMenuData, upperMenu?: string) => {
         // 寻找路由默认key选择
         data.forEach((i) => {
@@ -57,7 +57,6 @@ const SideBar: React.FC<IProps> = ({ menuData, onClose }) => {
 
     return (
         <div className="sidebar-box">
-            <ProgressTop />
             <div className="logo-warp">
                 {false ? <Spin indicator={<LoadingOutlined style={{ fontSize: 22 }} />} /> : <div>Logo</div>}
             </div>
