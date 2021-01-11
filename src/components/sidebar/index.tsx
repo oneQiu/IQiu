@@ -5,7 +5,6 @@ import { LoadingOutlined } from '@ant-design/icons';
 import IconFont from '@/styles/icon';
 import './index.less';
 import { keyToPath } from '@/utils/public';
-import loading from '../loadingBar';
 const { SubMenu } = Menu;
 
 interface IProps {
@@ -21,7 +20,7 @@ const SideBar: React.FC<IProps> = ({ menuData, onClose }) => {
         defaultOpenKeys: [],
         defaultSelectedKeys: [],
     };
-    loading.LoadingBar();
+
     const findMenuKey = (data: TMenuData, upperMenu?: string) => {
         // 寻找路由默认key选择
         data.forEach((i) => {

@@ -5,6 +5,7 @@ import './index.less';
 interface IStates {
     data: string[];
     tabList: Array<{ key: string; tab: ReactNode }>;
+    killData: RequestInfo[];
 }
 interface IProps {
     msg?: string;
@@ -20,6 +21,7 @@ export default class Default extends React.Component<IProps, IStates> {
                     tab: 'Top',
                 },
             ],
+            killData: [],
         };
     }
 
@@ -41,7 +43,7 @@ export default class Default extends React.Component<IProps, IStates> {
                                     <div className="card-left-top">
                                         <Card
                                             className="card-left-mine-info"
-                                            title="Mine Study Plan"
+                                            title="List of Skills"
                                             headStyle={{ border: 'none' }}
                                         >
                                             <Statistic title="Active Users" value={112893} />

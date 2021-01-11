@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TUserState } from '@redux/user/types';
-import { Layout } from 'antd';
+import { Button, Layout } from 'antd';
 import Sidebar from '@/components/sidebar';
 import './index.less';
 import { TRoute } from '@/typings/route';
 import RouteView from '@/routes';
 import Head from '@components/header';
+import loading from '@/components/loading';
 
 const { Sider, Header, Content } = Layout;
 /**
@@ -27,7 +28,7 @@ class Index extends Component<IProps, IStates> {
         const { routes } = props;
         this.state = {
             menuData: this.onFormatMenuData(routes),
-            siderCollapsed: false,
+            siderCollapsed: true,
         };
     }
 
@@ -62,6 +63,20 @@ class Index extends Component<IProps, IStates> {
                 <Layout className="layout-right layout-white-bg">
                     <Header className="layout-white-bg layout-header">
                         <Head />
+                        <Button
+                            onClick={() => {
+                                loading.start();
+                            }}
+                        >
+                            Click
+                        </Button>
+                        <Button
+                            onClick={() => {
+                                loading.hide();
+                            }}
+                        >
+                            Hide
+                        </Button>
                     </Header>
                     <Content className="layout-content">
                         <RouteView routes={routes} />
