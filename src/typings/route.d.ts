@@ -32,6 +32,10 @@ declare namespace TRoute {
          * 是否需要登录态 PS：后续加入角色权限
          */
         auth?: boolean;
+        /** 需要侧边栏 */
+        hasHeader?: boolean;
+        /** 需要顶部栏 */
+        hasSideBar?: boolean;
         /**
          * 侧边栏选项
          */
