@@ -10,7 +10,7 @@ import Head from '@components/header';
 
 const { Sider, Header, Content } = Layout;
 /**
- * 首页框架
+ * 框架
  */
 interface IProps {
     name?: string;
@@ -21,7 +21,7 @@ interface IStates {
     menuData?: TMenuData;
     siderCollapsed: boolean;
 }
-class Index extends Component<IProps, IStates> {
+class LayoutFrame extends Component<IProps, IStates> {
     constructor(props: IProps) {
         super(props);
         const { routes } = props;
@@ -64,7 +64,7 @@ class Index extends Component<IProps, IStates> {
                         <Head />
                     </Header>
                     <Content className="layout-content">
-                        <RouteView routes={routes} />
+                        <RouteView defaultConfig={routes} />
                     </Content>
                 </Layout>
             </Layout>
@@ -77,4 +77,4 @@ const mapStateToProps = (state: TUserState) => {
         ...state,
     };
 };
-export default connect(mapStateToProps)(Index);
+export default connect(mapStateToProps)(LayoutFrame);

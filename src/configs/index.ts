@@ -1,4 +1,4 @@
 /**
  * 默认一级路由
  */
-export const defaultPath = '/home';
+export const defaultPath = '/';
