@@ -1,5 +1,5 @@
 import React, { createRef, forwardRef, useEffect, useImperativeHandle, useState } from 'react';
-import { createPortal, render, unmountComponentAtNode } from 'react-dom';
+import { render, unmountComponentAtNode } from 'react-dom';
 import { Progress } from 'antd';
 import './index.less';
 import { getElById } from '@/utils/dom';

@@ -1,4 +1,4 @@
-@import '../../../styles/index.less';
+@import '@styles/index.less';
 
 .default-box {
     .empty-warp {
@@ -16,9 +16,6 @@
         width: 0;
         display: none;
     }
-    .inner-card-base {
-        height: 100%;
-    }
 
     // 左侧卡片
     .inner-card-left {
@@ -26,19 +23,26 @@
             display: flex;
             justify-content: space-between;
             .card-left-mine-info {
-                width: 450px;
+                min-width: 450px;
                 margin-right: 20px;
             }
             .card-left-carousel {
                 flex: 1;
+                .carousel {
+                    min-width: 400px;
+                    height: 250px;
+                    width: 400px;
+                }
             }
         }
         .card-left-content {
             margin-top: 45px;
-            height: 100%;
             .content-box {
-                height: 100%;
+                min-height: 500px;
             }
         }
+    }
+    .inner-card-right{
+        min-height: 800px;
     }
 }

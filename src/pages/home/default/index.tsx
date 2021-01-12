@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Button, Col, Empty, Row, Card, Progress, Statistic } from 'antd';
+import { Button, Col, Empty, Row, Card, Progress, Statistic, Carousel } from 'antd';
 import './index.less';
 
 interface IStates {
@@ -24,9 +24,8 @@ export default class Default extends React.Component<IProps, IStates> {
             killData: [],
         };
     }
-
     render() {
-        const { data, tabList } = this.state;
+        const { data } = this.state;
         return (
             <div className="home-content-warp default-box">
                 {data.length === 0 ? (
@@ -37,9 +36,9 @@ export default class Default extends React.Component<IProps, IStates> {
                     </div>
                 ) : (
                     <div className="default-inner">
-                        <Row gutter={40} style={{ height: '100%' }}>
+                        <Row gutter={40}>
                             <Col span={16}>
-                                <div className="card-box-shadow inner-card-left inner-card-base">
+                                <div className="inner-card-left">
                                     <div className="card-left-top">
                                         <Card
                                             className="card-left-mine-info"
@@ -53,15 +52,46 @@ export default class Default extends React.Component<IProps, IStates> {
                                             <Statistic title="Active Users" value={112893} />
                                             <Progress percent={100} />
                                         </Card>
-                                        <Card className="card-left-carousel">222</Card>
+                                        <Card
+                                            className="card-left-carousel"
+                                            title="asdad"
+                                            headStyle={{ border: 'none' }}
+                                        >
+                                            <Carousel className="carousel">
+                                                <div>
+                                                    <h3
+                                                        style={{
+                                                            height: 250,
+                                                            width: 600,
+                                                            backgroundColor: 'goldenrod',
+                                                        }}
+                                                    >
+                                                        1
+                                                    </h3>
+                                                </div>
+                                                <div>
+                                                    <h3
+                                                        style={{
+                                                            height: 250,
+                                                            width: 600,
+                                                            backgroundColor: 'greenyellow',
+                                                        }}
+                                                    >
+                                                        2
+                                                    </h3>
+                                                </div>
+                                            </Carousel>
+                                        </Card>
                                     </div>
                                     <div className="card-left-content">
-                                        <Card className="card-box-shadow content-box">Inner</Card>
+                                        <Card className="content-box">
+                                            <Button>Detail</Button>
+                                        </Card>
                                     </div>
                                 </div>
                             </Col>
                             <Col span={8}>
-                                <Card className="card-box-shadow  inner-card-right inner-card-base">11</Card>
+                                <Card className="inner-card-right">11</Card>
                             </Col>
                         </Row>
                     </div>
