@@ -4,22 +4,20 @@
 
 import { TRoute } from '@typings/route';
 // 引入页面
-// import Home from '@pages/home/index';
-import Default from '@/pages/home/default';
-// import homeRouteConfig from './home';
+import Home from '@pages/home';
 import { defaultPath } from '@configs/index';
 import { lazy } from 'react';
 
-const Setting = lazy(() => import('@pages/home/setting'));
-const User = lazy(() => import('@pages/home/user'));
-const Music = lazy(() => import('@pages/home/music'));
+const Setting = lazy(() => import('@pages/setting'));
+const User = lazy(() => import('@pages/user'));
+const Music = lazy(() => import('@pages/music'));
 
 const routeConfig: TRoute.TRouteConfig = [
     {
         key: 'Index',
         path: '/',
         exact: true,
-        component: Default,
+        component: Home,
         sidebarOpts: {
             iconType: 'icon-shouye',
             menuText: '首页',

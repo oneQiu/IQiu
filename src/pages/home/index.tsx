@@ -10,7 +10,7 @@ interface IStates {
 interface IProps {
     msg?: string;
 }
-export default class Default extends React.Component<IProps, IStates> {
+export default class Home extends React.Component<IProps, IStates> {
     constructor(props: IProps) {
         super(props);
         this.state = {
@@ -27,7 +27,7 @@ export default class Default extends React.Component<IProps, IStates> {
     render() {
         const { data } = this.state;
         return (
-            <div className="home-content-warp default-box">
+            <div className="home-content-warp home-box">
                 {data.length === 0 ? (
                     <div className="empty-warp">
                         <Empty description="暂无数据">
@@ -35,7 +35,7 @@ export default class Default extends React.Component<IProps, IStates> {
                         </Empty>
                     </div>
                 ) : (
-                    <div className="default-inner">
+                    <div className="home-inner">
                         <Row gutter={40}>
                             <Col span={16}>
                                 <div className="inner-card-left">
