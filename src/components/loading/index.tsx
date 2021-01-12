@@ -5,7 +5,10 @@ import './index.less';
 import { getElById } from '@/utils/dom';
 
 interface TLoadingRef {
-    start: () => void;
+    start: (value?: number) => void;
+    end: () => Promise<void>;
+    hide: () => void;
+    status: number;
 }
 interface LoadingOptions {
     type?: 'show';
@@ -14,25 +17,37 @@ const Loading = forwardRef(function LoadingBar({}: LoadingOptions, ref: React.Re
     const [percent, setPercent] = useState(0);
     const [show, setShow] = useState(false);
     const [status, setStatus] = useState(0); // 0 未加载 1 加载中 2 加载停滞 3 加载完成
-    useImperativeHandle(ref, () => ({ start }));
+
+    useImperativeHandle(ref, () => ({ start, end, hide, status }));
     useEffect(() => {
         setShow(true);
     }, []);
 
-    const start = () => {
-        const timer = setInterval(() => {
-            console.log(percent);
-            setPercent(percent + 10);
-        }, 20);
-        if (percent >= 80) clearInterval(timer);
+    const start = (value?: number) => {
+        if (typeof value === 'number') {
+            setPercent(value >= 100 ? 100 : value <= 0 ? 0 : value);
+            return;
+        }
+        setStatus(1);
+        setPercent(80);
     };
 
-    const end = () => {
-        setPercent(100);
-        setTimeout(() => setShow(false), 100);
+    const end = (): Promise<void> => {
+        return new Promise(async (resolve) => {
+            await setPercent(100);
+            await setStatus(3);
+            setTimeout(() => resolve(), 800);
+        });
     };
+
+    const hide = () => {
+        setShow(false);
+        setStatus(0);
+        setPercent(0);
+    };
+
     return (
-        <div className="mine-loading-box">
+        <div className="mine-loading-box" style={{ display: show ? 'block' : 'none' }}>
             <Progress
                 percent={percent}
                 strokeLinecap="square"
@@ -50,25 +65,17 @@ const loading = () => {
         render(<Loading ref={ref} />, getElById('loadingBar'));
     };
     return {
-        start: async () => {
+        start: async (value?: number) => {
             if (!ref.current) {
                 await show();
             }
-            console.log('start', ref.current);
-            setTimeout(() => {
-                ref.current?.start();
-            });
+            setTimeout(() => ref.current?.start(value));
         },
-        end: () => {
-            console.log('load');
-        },
-        hide: () => {
+        end: async () => {
             const el = document.getElementById('loadingBar');
-            console.log(el);
-            if (el) {
+            if (el && ref.current) {
+                await ref.current.end().then(() => ref.current?.hide());
                 unmountComponentAtNode(el);
-                // el.remove();
-                // document(el);
             }
         },
     };
