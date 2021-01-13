@@ -8,6 +8,7 @@ import UserConfig from './user';
 import SetterConfig from './setter';
 // 引入页面
 import Home from '@pages/home';
+import MdDetails from '@pages/mdDetails';
 
 const Music = lazy(() => import('@pages/music'));
 
@@ -30,6 +31,12 @@ const routeConfig: TRoute.TRouteConfig = [
             iconType: 'icon-yinle',
             menuText: '音乐',
         },
+    },
+    {
+        key: 'MdDetails',
+        path: '/mddetails/:mdId',
+        component: MdDetails,
+        hideSideBar: true,
     },
     UserConfig,
     SetterConfig,

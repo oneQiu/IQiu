@@ -13,3 +13,6 @@ interface TMenuItem {
 }
 
 declare type TMenuData = Array<TMenuItem>;
+
+declare module '*.less';
+declare module '*.md';

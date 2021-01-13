@@ -47,6 +47,10 @@ const WebpackBaseConfig = {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: 'file-loader',
             },
+            {
+                test: /\.md$/i,
+                use: 'raw-loader',
+            },
         ],
     },
     resolve: {

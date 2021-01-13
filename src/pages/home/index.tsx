@@ -1,13 +1,15 @@
 import React, { ReactNode } from 'react';
 import { Button, Col, Empty, Row, Card, Progress, Statistic, Carousel } from 'antd';
 import './index.less';
+import { RouteComponentProps } from 'react-router-dom';
+import { keyToPath } from '@/utils/public';
 
 interface IStates {
     data: string[];
     tabList: Array<{ key: string; tab: ReactNode }>;
     killData: RequestInfo[];
 }
-interface IProps {
+interface IProps extends RouteComponentProps {
     msg?: string;
 }
 export default class Home extends React.Component<IProps, IStates> {
@@ -26,6 +28,7 @@ export default class Home extends React.Component<IProps, IStates> {
     }
     render() {
         const { data } = this.state;
+        const { history } = this.props;
         return (
             <div className="home-content-warp home-box">
                 {data.length === 0 ? (
@@ -85,7 +88,17 @@ export default class Home extends React.Component<IProps, IStates> {
                                     </div>
                                     <div className="card-left-content">
                                         <Card className="content-box">
-                                            <Button>Detail</Button>
+                                            <Button
+                                                onClick={() => {
+                                                    const href = keyToPath('MdDetails');
+                                                    history.push({
+                                                        pathname: '/mdDetails/12',
+                                                    });
+                                                    console.log(href);
+                                                }}
+                                            >
+                                                Detail
+                                            </Button>
                                         </Card>
                                     </div>
                                 </div>

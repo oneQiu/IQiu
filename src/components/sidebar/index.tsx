@@ -30,7 +30,6 @@ const SideBar: React.FC<IProps> = ({ menuData, onClose }) => {
                 }
                 defaultKeys.defaultSelectedKeys = [i.key];
             } else if (i.children) {
-                console.log();
                 findMenuKey(i.children, i.key);
             }
         });

@@ -1,5 +1,4 @@
 import { RedirectProps, RouteProps } from 'react-router-dom';
-declare module '*.less';
 
 /**
  * 路由type
@@ -32,10 +31,10 @@ declare namespace TRoute {
          * 是否需要登录态 PS：后续加入角色权限
          */
         auth?: boolean;
-        /** 需要侧边栏 */
-        hasHeader?: boolean;
-        /** 需要顶部栏 */
-        hasSideBar?: boolean;
+        /** 隐藏侧边栏 */
+        hideHeader?: boolean;
+        /** 隐藏顶部栏 */
+        hideSideBar?: boolean;
         /**
          * 侧边栏选项
          */
