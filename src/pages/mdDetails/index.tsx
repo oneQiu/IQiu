@@ -19,7 +19,7 @@ Marked.setOptions({
 
 export default function MdDetails() {
     return (
-        <div className="home-content-warp vue">
+        <div className="home-content-warp misty">
             <Card className="markdown-content">
                 <div dangerouslySetInnerHTML={{ __html: Marked(Md) }}></div>
             </Card>
