@@ -1,3 +1,59 @@
+.md-details {
+    display: flex;
+
+    .markdown-content {
+
+        max-width: 860px;
+        min-width: 860px;
+        margin: 0 auto;
+        padding: 20px 30px 100px;
+
+    }
+
+    .md-navigation {
+        position: sticky;
+        top: 0px;
+        height: auto;
+        align-self: flex-start;
+
+        .md-nav-ul {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+            border-left: 1px solid #f0f0f0;
+
+            .md-nav-li {
+                padding-left: 20px;
+                // font-size: 16px;
+                transition: all .2s linear;
+
+                .leval1 {
+                    font-weight: bold;
+                    font-size: 16px;
+                }
+
+                a {
+                    color: black;
+
+                    &:hover {
+                        color: #1890ff;
+                    }
+                }
+            }
+
+            .active {
+                color: #1890ff;
+                border-left: 1px solid #1890ff;
+
+                a {
+                    color: #1890ff;
+                }
+
+            }
+        }
+    }
+}
+
 .vue {
     // vue-light 主题
 
@@ -7,11 +63,8 @@
         line-height: 1.6rem;
         letter-spacing: 0;
         overflow-x: hidden;
-        // ---
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 20px 30px 100px;
 
+        // ---
         p {
             line-height: 1.6rem;
             word-spacing: .05rem;
@@ -298,13 +351,6 @@
             --control-text-color: #777;
             --side-bar-bg-color: #f6f8fa;
         }
-
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 20px 30px 40px 30px;
-        padding-top: 20px;
-        padding-bottom: 100px;
-
 
         ul:first-child,
         ol:first-child {
