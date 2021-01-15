@@ -37,3 +37,32 @@ export const deepCopy = (data: any): any => {
         // const aData: { [key: string]: any } = {};
     }
 };
+
+/**
+ * 防抖函数 固定时间内再次执行 执行最后一次
+ */
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const debounce = (fn: Function, timeout = 100) => {
+    let timer: number | null = null;
+    return (...arg: unknown[]) => {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn(...arg);
+        }, timeout);
+    };
+};
+
+/**
+ * 节流函数 固定时间内再次执行无效
+ */
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const throttle = (fn: Function, timeout = 100) => {
+    const lastTime: number = +new Date();
+    return (...arg: unknown[]) => {
+        const now = +new Date();
+        if (now - lastTime > timeout) {
+            console.log('-----');
+        }
+        fn(...arg);
+    };
+};
