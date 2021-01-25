@@ -5,7 +5,7 @@ import hljs from 'highlight.js';
 import Md from '../../../md/test.md';
 import 'highlight.js/styles/atom-one-dark.css';
 import './index.less';
-import { debounce, throttle } from '@/utils/public';
+import { debounce } from '@/utils/public';
 
 // 初始化marked
 Marked.setOptions({
@@ -56,22 +56,16 @@ const MdDetails: React.FC = () => {
         setHash(decodeURI(location.hash));
     });
 
+    const scrollFunc = debounce((e: Event) => {
+        console.log(e.target);
+    }, 200);
     const contentScrollListen = () => {
-        contentRef.current?.addEventListener('scroll', (e) => {
-            // debounce(() => {
-            //     console.log(e.currentTarget);
-            // });
-        });
+        contentRef.current?.addEventListener('scroll', scrollFunc);
     };
 
     return (
         <div ref={contentRef} className="md-details">
-            <div
-                className="home-content-warp vue md-details-inner"
-                onClick={throttle(function x() {
-                    console.log(45);
-                }, 500)}
-            >
+            <div className="home-content-warp vue md-details-inner">
                 <Card className="markdown-content">
                     <div
                         dangerouslySetInnerHTML={{ __html: Marked(Md) }}
